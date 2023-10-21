@@ -1,0 +1,34 @@
+﻿@model IEnumerable<Permission_based_Authorization.Models.Identities.Users.UsersVM>
+
+@{
+    ViewBag.Title = "GetUsers";
+
+}
+<h1>GetUsers</h1>
+
+<table class="table table-bordered" width="100%" cellspacing="0">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th
+            <th>Roles</th>
+            <th>Manager Role</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        @foreach(var User in Model)
+        {
+          <tr>
+            <td>@User.Id </td>
+            <td>@User.Email </td>
+            <td>@string.Join(" , ",User.Roles.ToList()) </td>
+            <td><a asp-action="ManagerRoles" asp-route-Id="@User.Id" class="btn btn-primary">Manager Role</a></td>
+         </tr>  
+        }
+    </tbody>
+
+
+
+</table>
